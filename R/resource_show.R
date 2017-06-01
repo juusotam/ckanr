@@ -28,8 +28,8 @@
 #' resource_show(id = "05ff2255-c38a-40c9-b657-4ccb55ab2feb",
 #'               url = "http://data.nhm.ac.uk")
 #' }
-resource_show <- function(id, url = get_default_url(), as = 'list', ...) {
-  id <- as.ckan_resource(id, url = url)
+resource_show <- function(id, url = get_default_url(), key = NULL, as = 'list', ...) {
+  id <- as.ckan_resource(id, url = url, key = key)
   res <- ckan_GET(url, 'resource_show', list(id = id$id), ...)
   switch(as, json = res, list = as_ck(jsl(res), "ckan_resource"), table = jsd(res))
 }
