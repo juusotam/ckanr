@@ -33,6 +33,6 @@ package_show <- function(id, use_default_schema = FALSE,
                          url = get_default_url(), key = NULL, as = 'list', ...) {
   id <- as.ckan_package(id, url = url, key = key)
   args <- cc(list(id = id$id, use_default_schema = use_default_schema))
-  res <- ckan_GET(url, 'package_show', args, key = NULL, ...)
+  res <- ckan_GET(url, 'package_show', args, key = key, ...)
   switch(as, json = res, list = as_ck(jsl(res), "ckan_package"), table = jsd(res))
 }
